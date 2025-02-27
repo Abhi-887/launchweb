@@ -1,0 +1,22 @@
+RewriteEngine On
+RewriteBase /
+# If the request is not for a valid file or directory
+RewriteCond % { REQUEST_FILENAME } !-f
+RewriteCond % { REQUEST_FILENAME } !-d
+# Rewrite all requests to the index.html
+RewriteRule . /index.html [L]
+
+# Enable CORS
+Header set Access-Control-Allow-Origin "*"
+Header set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+Header set Access-Control-Allow-Headers "Content-Type"
+
+# Security headers
+Header set X-Content-Type-Options "nosniff"
+Header set X-Frame-Options "DENY"
+Header set X-XSS-Protection "1; mode=block"
+
+# Cache static assets
+<FilesMatch "\.(jpg|jpeg|png|gif|js|css)$">
+Header set Cache-Control "max-age=31536000, public"
+</FilesMatch>
