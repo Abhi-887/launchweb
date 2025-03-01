@@ -1,0 +1,5 @@
+# https://launchweb.in/robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://launchweb.in/sitemap.xml

@@ -2,14 +2,102 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  body {
-    @apply bg-gradient-to-br from-purple-900 to-blue-950 text-white min-h-screen;
-  }
+:root {
+  --primary-gradient-start: theme("colors.purple.600");
+  --primary-gradient-end: theme("colors.blue.600");
+  --background-dark: theme("colors.blue.950");
+  --background-darker: theme("colors.indigo.950");
+  --text-primary: theme("colors.white");
+  --text-secondary: theme("colors.gray.300");
+  --max-content-width: 1280px; /* Standard professional max width */
+  --navbar-height: 72px;
 }
 
-html {
-  scroll-behavior: smooth;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--navbar-height);
+    height: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    @apply bg-blue-950 text-white font-sans antialiased;
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0; /* Ensure no default margins */
+    padding: 0; /* Ensure no default padding */
+  }
+
+  /* Proper heading hierarchy */
+  h1 {
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold;
+  }
+
+  h2 {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold;
+  }
+
+  h3 {
+    @apply text-xl sm:text-2xl font-bold;
+  }
+
+  /* Fix layout spacing for the main content */
+  main {
+    padding-top: var(--navbar-height); /* Account for fixed navbar */
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Fix section spacing issues */
+  section {
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Section inner content padding */
+  .section-content {
+    @apply py-16 sm:py-20 md:py-24;
+  }
+
+  /* First section needs additional top padding due to fixed navbar */
+  section:first-child .section-content {
+    @apply pt-0 md:pt-0;
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+
+  /* Consistent container */
+  .container {
+    width: 100%;
+    max-width: var(--max-content-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  /* Fix grid layout */
+  .grid {
+    display: grid;
+    width: 100%;
+  }
 }
 
 .gradient-text {
@@ -53,8 +141,49 @@ html {
 }
 
 @layer components {
+  /* Button styles */
+  .btn {
+    @apply px-5 py-3 rounded-full font-medium transition-all duration-300 inline-flex items-center justify-center;
+  }
+
   .btn-primary {
-    @apply px-4 py-2 bg-primary text-white rounded-lg hover:bg-blue-600 transition-colors;
+    @apply bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:shadow-lg hover:shadow-purple-500/25;
+  }
+
+  .btn-outline {
+    @apply border border-white/20 text-white hover:bg-white/10 backdrop-blur-sm;
+  }
+
+  /* Card styles */
+  .glass-card {
+    @apply rounded-2xl backdrop-blur-lg bg-white/5 border border-white/10 shadow-xl shadow-black/5;
+  }
+
+  /* Text gradients */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-purple-200 to-blue-200;
+  }
+
+  .text-gradient-color {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-400;
+  }
+
+  /* Section connector - updated with better position and styling */
+  .section-connector {
+    @apply absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-px h-12 bg-gradient-to-b from-transparent via-purple-500/30 to-transparent;
+    z-index: 5;
+  }
+
+  /* Animated border */
+  .animated-border {
+    @apply absolute -inset-[1px] rounded-2xl bg-gradient-to-r from-purple-500 via-blue-500 to-purple-600 opacity-30 blur-sm;
+  }
+
+  /* Full height hero section */
+  .hero-section {
+    min-height: calc(100vh - var(--navbar-height));
+    display: flex;
+    align-items: center;
   }
 }
 
@@ -68,4 +197,61 @@ html {
   .animate-bounce-slow {
     animation: bounceSlow 3s infinite;
   }
+}
+
+/* Animation optimizations */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Mobile touch target improvements */
+@media (max-width: 768px) {
+  button,
+  a {
+    @apply min-h-[44px] min-w-[44px];
+  }
+}
+
+/* Fix overflow issues */
+.overflow-fix {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Smooth animated gradients with reduced performance impact */
+.animated-gradient {
+  background-size: 400% 400%;
+  animation: gradient 8s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Fix full-bleed section backgrounds while keeping content constrained */
+.full-bleed-section {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+/* Fix section height */
+.full-height-section {
+  min-height: 100vh;
 }

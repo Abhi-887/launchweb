@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 200" fill="none">
+  <!-- Rocket Body -->
+  <path d="M50 10C35 30 20 80 20 130V170C20 175 35 180 50 180C65 180 80 175 80 170V130C80 80 65 30 50 10Z" fill="#6C63FF"/>
+  
+  <!-- Nose Cone -->
+  <path d="M50 10C45 20 40 30 38 40H62C60 30 55 20 50 10Z" fill="#F2F2F2"/>
+  
+  <!-- Window -->
+  <circle cx="50" cy="60" r="10" fill="#E0E0FF"/>
+  <circle cx="50" cy="60" r="7" fill="#B0B0FF"/>
+  <circle cx="47" cy="57" r="2" fill="white"/>
+  
+  <!-- Side Fins -->
+  <path d="M20 140L5 160L20 170V140Z" fill="#4F46E5"/>
+  <path d="M80 140L95 160L80 170V140Z" fill="#4F46E5"/>
+  
+  <!-- Bottom Fins -->
+  <path d="M35 180L30 195H45L40 180H35Z" fill="#4F46E5"/>
+  <path d="M65 180L70 195H55L60 180H65Z" fill="#4F46E5"/>
+  
+  <!-- Highlights -->
+  <path d="M25 50C25 70 30 100 35 120V130C35 132 40 135 50 135C60 135 65 132 65 130V120C70 100 75 70 75 50" stroke="white" stroke-width="2" stroke-opacity="0.5"/>
+  
+  <!-- Rocket Details -->
+  <rect x="45" y="90" width="10" height="30" rx="2" fill="#4F46E5"/>
+  <rect x="35" y="110" width="30" height="5" rx="2" fill="#4F46E5"/>
+  
+  <!-- Shine -->
+  <path d="M30 45C35 35 65 35 70 45" stroke="white" stroke-width="2" stroke-opacity="0.7" stroke-linecap="round"/>
+</svg>

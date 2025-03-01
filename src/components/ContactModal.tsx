@@ -42,6 +42,16 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     return () => window.removeEventListener('keydown', handleEsc)
   }, [onClose])
 
+  // Prevent scroll on body when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    }
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isOpen]);
+
   return (
     <AnimatePresence>
       {isOpen && (

@@ -12,7 +12,7 @@ export const projects = [
       'Secure payment processing',
       'Real-time inventory tracking',
       'Advanced search and filtering',
-      'Mobile-responsive designs',
+      'Mobile-responsive design',
       'Admin dashboard',
       'Analytics integration'
     ],

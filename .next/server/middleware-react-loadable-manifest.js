@@ -1,1 +1,1 @@
-self.__REACT_LOADABLE_MANIFEST="{}"
+self.__REACT_LOADABLE_MANIFEST="{\"index.tsx -> ../components/Pricing\":{\"id\":\"index.tsx -> ../components/Pricing\",\"files\":[\"static/chunks/src_components_Pricing_tsx.js\"]}}"
